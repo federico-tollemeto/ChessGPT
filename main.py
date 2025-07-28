@@ -75,7 +75,6 @@ def ask_gpt_move(agent, board, history):
         print("****** TOOL RESPONSE ************")
         print(tool_response)
 
-        # Aggiungi entrambe le risposte alla history
         history.append(choice.message)       # assistant tool_call
         history.append(tool_response)        # risposta tool
 
@@ -87,7 +86,7 @@ def ask_gpt_move(agent, board, history):
         )
         choice = response.choices[0]
 
-    # Ora deve esserci il contenuto della mossa
+    # Contenuto della mossa
     if choice.message.content:
         move = choice.message.content.strip().lower()
         history.append(choice.message)
@@ -125,7 +124,7 @@ def new_game():
         )
     }]
 
-    agent = client  # useremo `client` direttamente
+    agent = client
 
     if color == "n":
         print("GPT gioca per primo (bianco)...")
